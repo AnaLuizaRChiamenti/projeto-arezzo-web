@@ -26,13 +26,13 @@ export default function Header() {
                         {navButtons.map((button) => (
                             <button
                                 key={button.id}
-                                className="font-semibold text-sm relative border-b-2 border-transparent hover:border-black transition-all duration-300 ease-in-out"
+                                className="font-medium text-sm relative border-b-2 border-transparent hover:border-black transition-all duration-300 ease-in-out"
                             >
                                 {button.text}
                             </button>
                         ))}
                         <div className="w-0.5 h-8 bg-black" />
-                        <button className="font-semibold text-sm relative border-b-2 border-transparent hover:border-black transition-all duration-300 ease-in-out">
+                        <button className="font-medium text-sm relative border-b-2 border-transparent hover:border-black transition-all duration-300 ease-in-out">
                             BRIZZA
                         </button>
                     </nav>
