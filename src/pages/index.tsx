@@ -56,7 +56,6 @@ export default function Home({
         <div>
           <Card products={products} />
         </div>
-
       </section>
     </div>
   );
