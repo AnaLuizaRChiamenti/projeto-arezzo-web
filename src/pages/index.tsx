@@ -1,7 +1,7 @@
 import Image from "next/image";
 import img_main_banner from '/public/Images/Banner/main_banner.png';
 import Livia_banner from '/public/Images/Banner/banner_livia.webp'
-import Header from "./components/Header";
+import Header from "../components/Header";
 
 
 export default function Home() {
