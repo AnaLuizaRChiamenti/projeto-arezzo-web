@@ -1,10 +1,13 @@
 import Image from "next/image";
 import img_main_banner from '/public/Images/Banner/main_banner.png';
 import Livia_banner from '/public/Images/Banner/banner_livia.webp'
+import Header from "./components/Header";
+
 
 export default function Home() {
   return (
     <>
+      <Header />
       <section className="w-full">
         <Image
           src={Livia_banner}
