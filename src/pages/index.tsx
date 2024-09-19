@@ -45,17 +45,18 @@ export default function Home({
       </section>
 
       <section className="w-full h-full py-10 flex flex-col">
-        <div className="w-full pl-10 pb-10">
+        <div className="w-full px-10 py-10 flex items-center justify-between">
           <h2 className="font-light text-xl leading-[32px] tracking-[4px] text-left uppercase">
             Apostas da semana
           </h2>
+          <div className="tracking-tight leading-3 font-light underline text-sm">
+            <p>Ver todos os produtos</p>
+          </div>
         </div>
         <div>
           <Card products={products} />
         </div>
-        <div className="flex justify-center mt-8 tracking-tight leading-3 font-light underline">
-          <p>Ver todos os produtos</p>
-        </div>
+
       </section>
     </div>
   );
