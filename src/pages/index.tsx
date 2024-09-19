@@ -8,8 +8,8 @@ export default function MainHome() {
 
       <div className="w-1/2 lg:w-1/3 flex flex-col 2xl:self-stretch 2xl:justify-between">
         <div>
-          <h1 className="text-sm font-bold mb-6 md:text-2xl">#LIVIAAREZZO</h1>
-          <h2 className="text-xl font-bold uppercase mb-4 md:text-lg">Nova Coleção</h2>
+          <h1 className="text-xl font-bold uppercase mb-4 md:text-lg">Nova Coleção</h1>
+          <h2 className="text-sm font-bold mb-6 md:text-2xl">#LIVIAAREZZO</h2>
         </div>
         <Image
           src={img_second_banner_2}
