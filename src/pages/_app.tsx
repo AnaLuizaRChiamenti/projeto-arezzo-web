@@ -12,7 +12,7 @@ const commissioner = Commissioner({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <div className={`${commissioner.variable} relative flex flex-col min-h-screen`}>
+    <div className={`${commissioner.variable} flex flex-col min-h-screen`}>
       <Header />
       <main className="flex-grow">
         <Component {...pageProps} />
