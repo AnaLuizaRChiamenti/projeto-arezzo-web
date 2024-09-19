@@ -1,6 +1,8 @@
 import { Commissioner } from 'next/font/google';
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 const commissioner = Commissioner({
   subsets: ['latin'],
@@ -10,8 +12,12 @@ const commissioner = Commissioner({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <div className={`${commissioner.variable}`}>
-      <Component {...pageProps} />
+    <div className={`${commissioner.variable} relative flex flex-col min-h-screen`}>
+      <Header />
+      <main className="flex-grow">
+        <Component {...pageProps} />
+      </main>
+      <Footer />
     </div>
   );
 }

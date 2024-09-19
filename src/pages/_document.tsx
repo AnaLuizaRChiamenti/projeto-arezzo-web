@@ -1,5 +1,6 @@
 import { Html, Head, Main, NextScript } from "next/document";
 import Header from "../components/Header";
+import Footer from "@/components/Footer";
 
 export default function Document() {
   return (
@@ -7,7 +8,6 @@ export default function Document() {
       <Head />
       <body className="antialiased">
         <Main />
-        <Header />
         <NextScript />
       </body>
     </Html>
