@@ -10,7 +10,7 @@ import { navButtons } from "../utils/nav-buttons";
 export default function Header() {
     return (
         <>
-            <header className="w-full h-24 p-5 flex">
+            <header className="fixed w-full h-24 p-5 flex bg-white">
                 <div className="flex items-center xl:gap-10">
                     <div className="w-24 md:w-28 md:ml-2 lg:w-20 xl:w-24 xl:ml-4">
                         <Image

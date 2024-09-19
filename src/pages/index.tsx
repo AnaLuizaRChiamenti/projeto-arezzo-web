@@ -7,7 +7,6 @@ import Header from "./components/Header";
 export default function Home() {
   return (
     <>
-      <Header />
       <section className="w-full">
         <Image
           src={Livia_banner}
