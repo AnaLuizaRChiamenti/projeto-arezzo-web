@@ -1,13 +1,28 @@
 import Image from "next/image";
 import img_main_banner from '/public/Images/Banner/main_banner.png';
 import Livia_banner from '/public/Images/Banner/banner_livia.webp'
-import Header from "./components/Header";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
+import { Product } from "@/types/product";
+import Card from "@/components/Card";
 
 
-export default function Home() {
+
+export const getStaticProps = (async () => {
+  const res = await fetch('http://localhost:3001/products')
+  const products = await res.json()
+  return { props: { products } }
+}) satisfies GetStaticProps<{
+  products: Product
+}>
+
+
+export default function Home({
+  products,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
+
   return (
-    <>
-      <section className="w-full">
+    <div className="flex flex-col min-h-screen">
+      <section className="relative w-full h-screen">
         <Image
           src={Livia_banner}
           alt="banner com a Livia"
@@ -19,7 +34,7 @@ export default function Home() {
           fill
           className="absolute inset-0 object-cover hidden lg:block"
         />
-        <button className="uppercase absolute bottom-20 left-1/2 transform -translate-x-1/2 bg-transparent border-2 border-white text-white px-4 py-2 rounded-full shadow-lg hover:bg-black z-20 text-xs md:text-lg lg:text-lg 2xl:text-sm">
+        <button className="uppercase absolute bottom-20 left-1/2 transform -translate-x-1/2 bg-transparent border-2 border-white text-white px-4 py-2 rounded-full shadow-lg hover:bg-black z-20 text-sm">
           Confira
         </button>
         <div className="absolute bottom-0 left-0 w-full bg-black text-white text-center py-2 z-10">
@@ -28,6 +43,20 @@ export default function Home() {
           </p>
         </div>
       </section>
-    </>
+
+      <section className="w-full h-full py-10 flex flex-col">
+        <div className="w-full pl-10 pb-10">
+          <h2 className="font-light text-xl leading-[32px] tracking-[4px] text-left uppercase">
+            Apostas da semana
+          </h2>
+        </div>
+        <div>
+          <Card products={products} />
+        </div>
+        <div className="flex justify-center mt-8 tracking-tight leading-3 font-light underline">
+          <p>Ver todos os produtos</p>
+        </div>
+      </section>
+    </div>
   );
-}
+} 
