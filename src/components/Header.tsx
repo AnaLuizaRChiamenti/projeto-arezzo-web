@@ -1,10 +1,10 @@
 import Image from "next/image";
-import ZZLogo from '/public/Images/Logos/ZZLOGO.png'
-import icon_favorite from '/public/Images/Icones/icon-favorite.svg';
-import icon_people from '/public/Images/Icones/icon-user.svg';
-import icon_bag from '/public/Images/Icones/icon-bag.svg';
-import icon_menu from '/public/Images/Icones/icon-menu.png'
-import icon_local from '/public/Images/Icones/icon-local.svg'
+import ZZLogo from "/public/Images/Logos/ZZLOGO.png";
+import icon_favorite from "/public/Images/Icones/icon-favorite.svg";
+import icon_people from "/public/Images/Icones/icon-user.svg";
+import icon_bag from "/public/Images/Icones/icon-bag.svg";
+import icon_menu from "/public/Images/Icones/icon-menu.png";
+import icon_local from "/public/Images/Icones/icon-local.svg";
 import { navButtons } from "../utils/nav-buttons";
 
 export default function Header() {
@@ -39,28 +39,50 @@ export default function Header() {
                 <section className="w-full flex justify-end gap-3 xl:gap-4">
                     <div className="md:flex md:justify-center lg:w-full xl:w-auto xl:m-6">
                         <button className="gap-3 lg:flex lg:items-center">
-                            <Image src={icon_local} alt="ícone de localização" width={32} className="hidden md:flex lg:w-6 xl:w-7" />
-                            <p className="hidden lg:block lg:text-sm lg:underline lg:font-medium xl:text-xs ">ATIVE SUA LOCALIZAÇÃO</p>
+                            <Image
+                                src={icon_local}
+                                alt="ícone de localização"
+                                width={32}
+                                className="hidden md:flex lg:w-6 xl:w-7"
+                            />
+                            <p className="hidden lg:block lg:text-sm lg:underline lg:font-medium xl:text-xs ">
+                                ATIVE SUA LOCALIZAÇÃO
+                            </p>
                         </button>
-
                     </div>
                     <button>
-                        <Image src={icon_favorite} alt="ícone de favoritos" className="w-6 md:w-8 lg:w-7 xl:w-7" />
+                        <Image
+                            src={icon_favorite}
+                            alt="ícone de favoritos"
+                            className="w-6 md:w-8 lg:w-7 xl:w-7"
+                        />
                     </button>
 
                     <button>
-                        <Image src={icon_people} alt="ícone de perfil" className="w-6 md:w-8 lg:w-7 xl:w-7" />
+                        <Image
+                            src={icon_people}
+                            alt="ícone de perfil"
+                            className="w-6 md:w-8 lg:w-7 xl:w-7"
+                        />
                     </button>
 
                     <button>
-                        <Image src={icon_bag} alt="ícone de sacola" className="w-6 md:w-8 lg:w-7 xl:w-7" />
+                        <Image
+                            src={icon_bag}
+                            alt="ícone de sacola"
+                            className="w-6 md:w-8 lg:w-7 xl:w-7"
+                        />
                     </button>
 
                     <button>
-                        <Image src={icon_menu} alt="ícone de sacola" className="w-6 md:w-8 lg:w-7 xl:hidden" />
+                        <Image
+                            src={icon_menu}
+                            alt="ícone de sacola"
+                            className="w-6 md:w-8 lg:w-7 xl:hidden"
+                        />
                     </button>
                 </section>
             </header>
         </>
-    )
+    );
 }
