@@ -6,18 +6,18 @@ interface ProductCardProps {
 }
 
 const renderProductImage = (images: { url: string }[], alt: string) => {
-  if (images.length > 0) {
-    return (
-      <Image
-        src={images[0].url}
-        alt={alt}
-        layout="fill"
-        className="object-cover"
-      />
-    );
-  } else {
+  if (images.length < 0) {
     return <p>Imagem não disponível</p>;
   }
+
+  return (
+    <Image
+      src={images[0].url}
+      alt={alt}
+      layout="fill"
+      className="object-cover"
+    />
+  );
 };
 
 export default function ProductCard({ product }: ProductCardProps) {
