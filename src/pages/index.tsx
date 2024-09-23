@@ -7,7 +7,7 @@ import Livia_banner from "/public/Images/Banner/banner_livia.webp";
 export default function MainHome() {
   return (
     <>
-      <section className="w-full">
+      <section className="relative overflow-hidden w-full h-screen">
         <Image
           src={Livia_banner}
           alt="banner com a Livia"
@@ -30,7 +30,7 @@ export default function MainHome() {
         </div>
       </section>
 
-      <div className="w-full h-screen md:h-auto md:items-end flex flex-wrap items-center py-3 px-8 2xl:py-16 2xl:px-32">
+      <section className="w-full h-screen md:h-auto md:items-end flex flex-wrap items-center py-3 px-8 2xl:py-16 2xl:px-32">
         <div className="w-1/2 lg:w-1/3 flex flex-col 2xl:self-stretch 2xl:justify-between">
           <div>
             <h1 className="text-xl font-bold uppercase mb-4 md:text-lg">
@@ -60,7 +60,7 @@ export default function MainHome() {
             Ver coleção
           </button>
         </div>
-      </div>
+      </section>
     </>
   );
 }
