@@ -1,25 +1,21 @@
-import Image from "next/image";
+import Image from 'next/image';
 import img_main_banner from '/public/Images/Banner/main_banner.png';
-import Livia_banner from '/public/Images/Banner/banner_livia.webp'
-import { GetStaticProps, InferGetStaticPropsType } from "next";
-import { Product } from "@/types/product";
-import Card from "@/components/Card";
-
-
+import Livia_banner from '/public/Images/Banner/banner_livia.webp';
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { Product } from '@/types/product';
+import CardList from '@/components/CardList';
 
 export const getStaticProps = (async () => {
-  const res = await fetch('http://localhost:3001/products')
-  const products = await res.json()
-  return { props: { products } }
+  const res = await fetch('http://localhost:3001/products');
+  const products = await res.json();
+  return { props: { products } };
 }) satisfies GetStaticProps<{
-  products: Product
-}>
-
+  products: Product;
+}>;
 
 export default function Home({
   products,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-
   return (
     <div className="flex flex-col min-h-screen">
       <section className="relative w-full h-screen">
@@ -39,7 +35,8 @@ export default function Home({
         </button>
         <div className="absolute bottom-0 left-0 w-full bg-black text-white text-center py-2 z-10">
           <p className="text-xs tracking-widest uppercase md:text-xs">
-            <strong>Frete FIXO</strong> em R$9,90 para regiões Sul, Sudeste e capitais de NE e CO.
+            <strong>Frete FIXO</strong> em R$9,90 para regiões Sul, Sudeste e
+            capitais de NE e CO.
           </p>
         </div>
       </section>
@@ -54,9 +51,9 @@ export default function Home({
           </div>
         </div>
         <div>
-          <Card products={products} />
+          <CardList products={products} />
         </div>
       </section>
     </div>
   );
-} 
+}

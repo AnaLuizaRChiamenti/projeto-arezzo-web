@@ -1,32 +1,37 @@
-import { Product } from "@/types/product";
-import Image from "next/image";
+import { Product } from '@/types/product';
+import Image from 'next/image';
 
-interface ProductListProps {
-    products: Product[];
+interface ProductCardProps {
+  product: Product;
 }
 
-export default function Card({ products }: ProductListProps) {
+const renderProductImage = (images: { url: string }[], alt: string) => {
+  if (images.length > 0) {
     return (
-        <div className="w-full flex overflow-x-auto ">
-            {products.slice(0, 5).map((product, index) => (
-                <div key={index} className="flex flex-col items-center min-w-48 lg:min-w-72 2xl:min-w-96">
-                    <div className="relative w-[186px] h-[249px] mb-2 flex-wrap lg:w-[280px] lg:h-[458px] 2xl:h-[480px] 2xl:w-[370px]">
-                        {product.images.length > 0 ? (
-                            <Image
-                                src={product.images[0].url}
-                                alt={product.name}
-                                layout="fill"
-                            />
-                        ) : (
-                            <p>Imagem não disponível</p>
-                        )}
-                    </div>
-                    <div className="w-full flex items-center justify-between px-2">
-                        <h2 className="text-sm truncate w-2/3">{product.name}</h2>
-                        <p className="text-sm font-bold truncate w-1/3 text-right">{product.price.formattedValue}</p>
-                    </div>
-                </div>
-            ))}
-        </div>
+      <Image
+        src={images[0].url}
+        alt={alt}
+        layout="fill"
+        className="object-cover"
+      />
     );
+  } else {
+    return <p>Imagem não disponível</p>;
+  }
+};
+
+export default function ProductCard({ product }: ProductCardProps) {
+  return (
+    <div className="flex flex-col items-center min-w-[186px] lg:min-w-[280px] 2xl:min-w-[370px] h-auto">
+      <div className="relative w-full aspect-[4/5] mb-2 flex-grow">
+        {renderProductImage(product.images, product.name)}
+      </div>
+      <div className="w-full flex items-center justify-between px-2">
+        <h2 className="text-sm truncate w-2/3">{product.name}</h2>
+        <p className="text-sm font-bold truncate w-1/3 text-right">
+          {product.price.formattedValue}
+        </p>
+      </div>
+    </div>
+  );
 }
