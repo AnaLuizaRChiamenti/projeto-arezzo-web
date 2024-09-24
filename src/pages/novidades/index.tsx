@@ -1,3 +1,10 @@
+import NavigationLane from '@/components/Navigation-lane';
+
 export default function homePDC() {
-  return <h1>Oi</h1>;
+  return (
+    <div className=" flex flex-col">
+      <NavigationLane />
+      <section className="w-full h-screen"></section>
+    </div>
+  );
 }
