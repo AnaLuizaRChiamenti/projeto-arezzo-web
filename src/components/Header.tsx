@@ -1,11 +1,12 @@
-import Image from "next/image";
-import ZZLogo from "/public/Images/Logos/ZZLOGO.png";
-import icon_favorite from "/public/Images/Icones/icon-favorite.svg";
-import icon_people from "/public/Images/Icones/icon-user.svg";
-import icon_bag from "/public/Images/Icones/icon-bag.svg";
-import icon_menu from "/public/Images/Icones/icon-menu.png";
-import icon_local from "/public/Images/Icones/icon-local.svg";
-import { navButtons } from "../utils/nav-buttons";
+import Image from 'next/image';
+import ZZLogo from '/public/Images/Logos/ZZLOGO.png';
+import icon_favorite from '/public/Images/Icones/icon-favorite.svg';
+import icon_people from '/public/Images/Icones/icon-user.svg';
+import icon_bag from '/public/Images/Icones/icon-bag.svg';
+import icon_menu from '/public/Images/Icones/icon-menu.png';
+import icon_local from '/public/Images/Icones/icon-local.svg';
+import { navButtons } from '../utils/nav-buttons';
+import Link from 'next/link';
 
 export default function Header() {
     return (
@@ -13,22 +14,23 @@ export default function Header() {
             <header className="fixed w-full h-24 p-5 flex bg-white z-50">
                 <div className="flex items-center xl:gap-10">
                     <div className="w-24 md:w-28 md:ml-2 lg:w-20 xl:w-24 xl:ml-4">
-                        <Image
-                            src={ZZLogo}
-                            alt="Logo da Arezzo"
-                            width={240}
-                            height={100}
-                            objectFit="contain"
-                        />
+                        <Link href={'/'}>
+                            <Image
+                                src={ZZLogo}
+                                alt="Logo da Arezzo"
+                                width={240}
+                                height={100}
+                                objectFit="contain"
+                            />
+                        </Link>
                     </div>
                     <nav className="gap-8 hidden xl:flex">
                         {navButtons.map((button) => (
-                            <button
-                                key={button.id}
-                                className="font-medium text-sm border-b-2 border-transparent hover:border-black transition-all duration-300 ease-in-out"
-                            >
-                                {button.text}
-                            </button>
+                            <Link key={button.id} href={`/${button.id}`}>
+                                <button className="font-medium text-sm border-b-2 border-transparent hover:border-black transition-all duration-300 ease-in-out">
+                                    {button.text}
+                                </button>
+                            </Link>
                         ))}
                         <div className="w-0.5 h-8 bg-black" />
                         <button className="font-medium text-sm border-b-2 border-transparent hover:border-black transition-all duration-300 ease-in-out">
