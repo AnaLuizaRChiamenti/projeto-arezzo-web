@@ -7,7 +7,7 @@ interface ProductListProps {
 
 export default function CardNavList({ products }: ProductListProps) {
   return (
-    <div className="w-full flex overflow-x-auto">
+    <div className="w-full border border-b-2 gap-5 p-5 flex overflow-x-auto">
       {products.slice(0, 5).map((product, index) => (
         <CardNav key={index} product={product} />
       ))}

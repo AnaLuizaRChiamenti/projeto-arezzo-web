@@ -21,11 +21,18 @@ const renderProductImage = (images: { url: string }[], alt: string) => {
 };
 
 export default function CardNav({ product }: ProductCardProps) {
+  console.log(product);
+
   return (
-    <div className="flex flex-col  p-4 items-center min-w-[186px] lg:min-w-[280px] 2xl:min-w-[370px] h-auto">
+    <div className="flex flex-col h-auto bg-custom-grey-card p-2 items-center min-w-[100px] lg:min-w-[280px] 2xl:min-w-[370px] ">
       <section className="relative w-full aspect-[4/5] flex-grow">
         {renderProductImage(product.images, product.name)}
       </section>
+      <p className="text-xs tracking-wide">
+        {product.categories && product.categories.length > 0
+          ? product.categories[0].code
+          : 'Sem categoria'}
+      </p>
     </div>
   );
 }
