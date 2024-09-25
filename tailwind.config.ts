@@ -12,6 +12,7 @@ const config: Config = {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
         'custom-beige': '#CEC6BE',
+        'custom-grey-card': '#F2F2F2',
       },
     },
   },

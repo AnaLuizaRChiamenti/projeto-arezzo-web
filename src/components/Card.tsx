@@ -22,7 +22,7 @@ const renderProductImage = (images: { url: string }[], alt: string) => {
 
 export default function ProductCard({ product }: ProductCardProps) {
   return (
-    <div className="flex flex-col items-center min-w-[186px] lg:min-w-[280px] 2xl:min-w-[370px] h-auto mt-5">
+    <div className="flex flex-col items-center min-w-44 lg:min-w-64 2xl:min-w-96 h-auto">
       <div className="relative w-full aspect-[4/5] mb-2 flex-grow">
         {renderProductImage(product.images, product.name)}
       </div>
