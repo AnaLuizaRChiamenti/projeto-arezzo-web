@@ -1,4 +1,5 @@
 import CardNavList from '@/components/CardNavList';
+import NavigationLane from '@/components/Navigation-lane';
 import { Product } from '@/types/product';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 
@@ -15,7 +16,10 @@ export default function homePDC({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <section className="">
-      <div>
+      <div className="w-full pb-5 mb-5">
+        <NavigationLane />
+      </div>
+      <div className="w-full">
         <CardNavList products={products} />
       </div>
     </section>

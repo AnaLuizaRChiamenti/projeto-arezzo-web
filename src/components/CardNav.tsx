@@ -24,7 +24,7 @@ export default function CardNav({ product }: ProductCardProps) {
   console.log(product);
 
   return (
-    <div className="flex flex-col h-auto bg-custom-grey-card p-2 items-center min-w-[100px] lg:min-w-[280px] 2xl:min-w-[370px] ">
+    <div className="flex flex-col h-full bg-custom-grey-card p-2 items-center min-w-[100px] lg:min-w-[170px] 2xl:min-w-[150px] ">
       <section className="relative w-full aspect-[4/5] flex-grow">
         {renderProductImage(product.images, product.name)}
       </section>
