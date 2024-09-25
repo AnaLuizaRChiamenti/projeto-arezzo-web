@@ -21,8 +21,6 @@ const renderProductImage = (images: { url: string }[], alt: string) => {
 };
 
 export default function CardNav({ product }: ProductCardProps) {
-  console.log(product);
-
   return (
     <div className="flex flex-col h-full bg-custom-grey-card p-2 items-center min-w-24 lg:min-w-44 2xl:min-w-36 ">
       <section className="relative w-full aspect-[4/5] flex-grow">
