@@ -24,7 +24,7 @@ export default function Header() {
               />
             </Link>
           </div>
-          <nav className="gap-8 hidden xl:flex">
+          <nav className="gap-8 hidden md:flex md:items-center ">
             {navButtons.map((button) => (
               <Link key={button.id} href={`/${button.id}`}>
                 <button className="font-medium text-sm border-b-2 border-transparent hover:border-black transition-all duration-300 ease-in-out">
