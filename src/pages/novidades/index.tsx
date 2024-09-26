@@ -9,14 +9,14 @@ import Filter from '@/components/Filter';
 import CardListPDC from '@/components/Card-list-pdc';
 
 export const getStaticProps = (async () => {
-  const res = await fetch('http://localhost:3001/products');
+  const res = await fetch(process.env.NEXT_PUBLIC_DB_URL as string);
   const products = await res.json();
   return { props: { products } };
 }) satisfies GetStaticProps<{
   products: Product[];
 }>;
 
-export default function homePDC({
+export default function HomePDC({
   products,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [isFilterVisible, setIsFilterVisible] = useState(false);
