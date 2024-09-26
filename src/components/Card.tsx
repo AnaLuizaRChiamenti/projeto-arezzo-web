@@ -26,7 +26,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       <div className="relative w-full aspect-[4/5] mb-2 flex-grow">
         {renderProductImage(product.images, product.name)}
       </div>
-      <div className="w-full flex items-center justify-between px-2">
+      <div className="w-full flex items-center px-2">
         <h2 className="text-sm truncate w-2/3">{product.name}</h2>
         <p className="text-sm font-bold truncate w-1/3 text-right">
           {product.price.formattedValue}

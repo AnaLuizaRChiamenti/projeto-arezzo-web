@@ -1,14 +1,14 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { Product } from '@/types/product';
-import CardList from '@/components/CardList';
 import Image from 'next/image';
 import img_second_banner from '/public/Images/Banner/second_banner.png';
 import img_second_banner_2 from '/public/Images/Banner/second_banner_2.png';
 import img_main_banner from '/public/Images/Banner/main_banner.png';
 import Livia_banner from '/public/Images/Banner/banner_livia.webp';
+import CardList from '@/components/Card-list';
 
 export const getStaticProps = (async () => {
-  const res = await fetch('http://localhost:3001/products');
+  const res = await fetch(process.env.NEXT_PUBLIC_DB_URL as string);
   const products = await res.json();
   return { props: { products } };
 }) satisfies GetStaticProps<{

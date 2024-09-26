@@ -6,16 +6,17 @@ import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import Image from 'next/image';
 import icon_filter from '/public/Images/Icones/icon-filter.png';
 import Filter from '@/components/Filter';
+import CardListPDC from '@/components/Card-list-pdc';
 
 export const getStaticProps = (async () => {
-  const res = await fetch('http://localhost:3001/products');
+  const res = await fetch(process.env.NEXT_PUBLIC_DB_URL as string);
   const products = await res.json();
   return { props: { products } };
 }) satisfies GetStaticProps<{
   products: Product[];
 }>;
 
-export default function homePDC({
+export default function HomePDC({
   products,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [isFilterVisible, setIsFilterVisible] = useState(false);
@@ -55,6 +56,15 @@ export default function homePDC({
           Peça-chave do guarda-roupa, as sandálias femininas da Arezzo traduzem
           e valorizam o estilo da mulher contemporânea.{' '}
         </p>
+      </div>
+
+      <div>
+        <CardListPDC products={products} />
+        <div className="w-full flex items-center justify-center">
+          <button className="flex items-center -tracking-tighter border border-gray-400 rounded-full px-12 py-4 mb-6 hover:bg-gray-300">
+            Veja mais produtos
+          </button>
+        </div>
       </div>
 
       {isFilterVisible && (
