@@ -1,9 +1,23 @@
+import { useState } from 'react';
+import CardNavList from '@/components/CardNavList';
+import NavigationLane from '@/components/Navigation-lane';
+import { Product } from '@/types/product';
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import Image from 'next/image';
 import icon_filter from '/public/Images/Icones/icon-filter.png';
-import { useState } from 'react';
 import Filter from '@/components/Filter';
 
-export default function HomePDC() {
+export const getStaticProps = (async () => {
+  const res = await fetch('http://localhost:3001/products');
+  const products = await res.json();
+  return { props: { products } };
+}) satisfies GetStaticProps<{
+  products: Product[];
+}>;
+
+export default function homePDC({
+  products,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   const [isFilterVisible, setIsFilterVisible] = useState(false);
 
   const toggleFilter = () => {
@@ -11,7 +25,13 @@ export default function HomePDC() {
   };
 
   return (
-    <section className="relative flex items-center justify-center py-6 md:justify-start md:px-10 lg:px-16">
+    <section className="">
+      <div className="w-full pb-5 mb-5">
+        <NavigationLane />
+      </div>
+      <div className="w-full">
+        <CardNavList products={products} />
+      </div>
       <button
         onClick={toggleFilter}
         className="flex items-center justify-center px-7 py-2 border-2 border-gray-400 rounded-full hover:bg-gray-300 transform bg-transparent md:w-36 lg:w-48 lg:h-16 xl:w-36 xl:h-12"
