@@ -14,4 +14,6 @@ export interface Product {
   };
   categories?: Categories[];
   code: string;
+  description?: string;
+  color?: string;
 }
