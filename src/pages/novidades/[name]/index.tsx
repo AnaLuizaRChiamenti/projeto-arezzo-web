@@ -1,4 +1,4 @@
-import NavigationLane from '@/components/Navigation-lane';
+import NavigationLane from '@/components/Navigation-lane/Navigation-lane';
 import { Product } from '@/types/product';
 import sizesList from '@/utils/sizes-list';
 import { GetStaticProps, GetStaticPaths } from 'next';
