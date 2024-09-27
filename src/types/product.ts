@@ -13,4 +13,7 @@ export interface Product {
     formattedValue: string;
   };
   categories?: Categories[];
+  code: string;
+  description?: string;
+  color?: string;
 }

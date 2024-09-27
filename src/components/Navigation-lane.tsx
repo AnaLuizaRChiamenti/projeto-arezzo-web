@@ -1,7 +1,11 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-export default function NavigationLane() {
+interface NavigationLaneProps {
+  productName?: string;
+}
+
+export default function NavigationLane({ productName }: NavigationLaneProps) {
   const router = useRouter();
   const currentPath = router.pathname;
 
@@ -23,6 +27,10 @@ export default function NavigationLane() {
               {index < routes.length - 1 && <span className="mx-1">|</span>}
             </li>
           ))}
+          <li className="uppercase font-sans">
+            <span className="mx-1">|</span>
+            {productName}
+          </li>
         </ul>
       </section>
     </div>
