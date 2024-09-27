@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import NavigationLane from '@/components/Navigation-lane/Navigation-lane';
 import { Product } from '@/types/product';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import Image from 'next/image';
@@ -7,6 +6,7 @@ import icon_filter from '/public/Images/Icones/icon-filter.png';
 import CardListPDC from '@/components/Card-list-pdc';
 import CardNavList from '@/components/Card-nav-list';
 import Filter from '@/components/Filter';
+import NavigationLane from '@/components/Navigation-lane';
 
 export const getStaticProps = (async () => {
   const res = await fetch(process.env.NEXT_PUBLIC_DB_URL as string);

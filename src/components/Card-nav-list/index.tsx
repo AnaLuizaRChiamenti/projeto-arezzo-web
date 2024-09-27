@@ -1,5 +1,5 @@
 import { Product } from '@/types/product';
-import CardNav from './Card-nav';
+import CardNav from '../Card-nav';
 
 interface ProductListProps {
   products: Product[];

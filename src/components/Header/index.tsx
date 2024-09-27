@@ -5,8 +5,8 @@ import icon_people from '/public/Images/Icones/icon-user.svg';
 import icon_bag from '/public/Images/Icones/icon-bag.svg';
 import icon_menu from '/public/Images/Icones/icon-menu.png';
 import icon_local from '/public/Images/Icones/icon-local.svg';
-import { navButtons } from '../utils/nav-buttons';
 import Link from 'next/link';
+import { navButtons } from '@/utils/nav-buttons';
 
 export default function Header() {
   return (
