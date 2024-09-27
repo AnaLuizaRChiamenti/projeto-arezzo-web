@@ -6,6 +6,7 @@ import img_second_banner_2 from '/public/Images/Banner/second_banner_2.png';
 import img_main_banner from '/public/Images/Banner/main_banner.png';
 import Livia_banner from '/public/Images/Banner/banner_livia.webp';
 import CardList from '@/components/Card-list';
+import Link from 'next/link';
 
 export const getStaticProps = (async () => {
   const res = await fetch(process.env.NEXT_PUBLIC_DB_URL as string);
@@ -81,7 +82,7 @@ export default function Home({
             Apostas da semana
           </h2>
           <div className="tracking-tight leading-3 font-light underline text-sm">
-            <p>Ver todos os produtos</p>
+            <Link href={'/novidades'}>Ver todos os produtos</Link>
           </div>
         </div>
         <div>

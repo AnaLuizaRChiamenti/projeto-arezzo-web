@@ -1,7 +1,9 @@
+import NavigationLane from '@/components/Navigation-lane';
 import { Product } from '@/types/product';
 import sizesList from '@/utils/sizes-list';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import Image from 'next/image';
+import { useState } from 'react';
 
 interface ProductPageProps {
   product: Product;
@@ -9,7 +11,7 @@ interface ProductPageProps {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const { name } = context.params!;
-  const res = await fetch(`http://localhost:3001/products?code=${name}`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_DB_URL}?code=${name}`);
   const products = await res.json();
 
   return {
@@ -20,8 +22,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await fetch('http://localhost:3001/products');
-  const products = await res.json();
+  const res = await fetch(process.env.NEXT_PUBLIC_DB_URL as string);
+  const products: Product[] = await res.json();
   const paths = products.map((product) => ({
     params: { name: product.code },
   }));
@@ -33,46 +35,58 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export default function ProductPage({ product }: ProductPageProps) {
-  return (
-    <div className="w-full">
-      <div className="relative w-96 h-96">
-        <Image
-          src={product.images[0]?.url}
-          alt={product.name}
-          layout="fill"
-          className="object-cover"
-        />
-      </div>
-      <div className="px-6 mt-5">
-        <div className="border-b-2 pb-4">
-          <h1 className="-tracking-tighter">{product.name}</h1>
-          <p className="-tracking-tighter font-bold pt-1">
-            {product.price.formattedValue}
-          </p>
-        </div>
+  const [selectedSize, setSelectedSize] = useState<string | null>(null);
 
-        <div className="flex flex-wrap gap-2 mt-4 border-b-2 pb-5">
-          {sizesList.map((size, index) => (
-            <button
+  return (
+    <>
+      <div className="hidden md:block md:w-full md:pb-5 md:mb-8">
+        <NavigationLane productName={product.name} />
+      </div>
+      <div className="w-full lg:grid lg:grid-cols-2 lg:gap-2 px-4 lg:px-8 mb-10">
+        <div className="flex flex-wrap">
+          {product.images.map((image, index) => (
+            <div
               key={index}
-              className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm hover:bg-slate-300"
+              className={`w-full p-1 ${index === 0 ? 'block' : 'hidden'} sm:w-1/2 sm:block`}
             >
-              {size}
-            </button>
+              <Image
+                src={image.url}
+                alt={product.name}
+                width={500}
+                height={500}
+                className="object-cover"
+              />
+            </div>
           ))}
         </div>
-
-        <div className="flex flex-col items-center w-full mt-5">
-          <button className="w-full flex items-center justify-center -tracking-tighter border border-gray-400 rounded-full px-6 py-3 hover:bg-gray-300">
-            Adicionar a sacola
-          </button>
-          <button className="w-full flex items-center justify-center text-white bg-green-700 -tracking-tighter border border-gray-400 rounded-full px-6 py-3 my-4 hover:bg-gray-300">
-            Comprar agora
-          </button>
-        </div>
-
-        <div>
-          <div className="pb-5 border-b-2">
+        <div className="mt-6 lg:mt-0 lg:px-8 2xl:w-3/3 2xl:ml-auto 2xl:flex 2xl:flex-col">
+          <div className="border-b-2 pb-4">
+            <h1 className="text-2xl -tracking-tighter">{product.name}</h1>
+            <p className="-tracking-tighter font-bold text-lg pt-1">
+              {product.price.formattedValue}
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-2 mt-4 border-b-2 pb-5">
+            {sizesList.map((size, index) => (
+              <button
+                key={index}
+                onClick={() => setSelectedSize(size)}
+                className={`bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm hover:bg-slate-300 ${selectedSize === size ? 'bg-slate-300' : ''
+                  }`}
+              >
+                {size}
+              </button>
+            ))}
+          </div>
+          <div className="flex flex-col items-center w-full mt-5 border-b-2">
+            <button className="w-full flex items-center justify-center -tracking-tighter border border-gray-400 rounded-full px-6 py-3 hover:bg-gray-300 2xl:w-2/3  ">
+              Adicionar a sacola
+            </button>
+            <button className="w-full flex items-center justify-center text-white bg-green-700 -tracking-tighter border border-gray-400 rounded-full px-6 py-3 my-4 2xl:w-2/3">
+              Comprar agora
+            </button>
+          </div>
+          <div className="pt-5 pb-5 border-b-2">
             <h2 className="mb-2 text-lg -tracking-wide">Por que apostar?</h2>
             <p className="-tracking-wide">
               Com uma pegada urbana e descolada, os sapatos tratorados são
@@ -100,6 +114,6 @@ export default function ProductPage({ product }: ProductPageProps) {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
