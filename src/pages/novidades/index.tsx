@@ -70,13 +70,11 @@ export default function HomePDC({
         </div>
       </div>
 
-      {isFilterVisible && (
-        <>
-          <div className="fixed flex items-center left-0 top-0 h-screen w-96 bg-white z-10">
-            <Filter onClose={toggleFilter} />
-          </div>
-        </>
-      )}
+      <div
+        className={`fixed flex items-center left-0 top-0 h-screen w-96 bg-white z-10 transform transition-transform duration-300 ease-linear  ${isFilterVisible ? 'translate-x-0 ' : '-translate-x-full '}`}
+      >
+        <Filter onClose={toggleFilter} />
+      </div>
     </section>
   );
 }
