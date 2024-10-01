@@ -71,8 +71,8 @@ export default function ProductPage({ product }: ProductPageProps) {
               <button
                 key={index}
                 onClick={() => setSelectedSize(size)}
-                className={`bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm hover:bg-slate-300 ${selectedSize === size ? 'bg-slate-300' : ''
-                  }`}
+                className={`bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm hover:bg-slate-300 
+                  ${selectedSize === size ? 'bg-slate-300' : ''}`}
               >
                 {size}
               </button>

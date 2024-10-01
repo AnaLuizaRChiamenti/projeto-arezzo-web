@@ -20,9 +20,14 @@ export default function HomePDC({
   products,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [isFilterVisible, setIsFilterVisible] = useState(false);
+  const [visibleProductsCount, setVisibleProductsCount] = useState(9);
 
   const toggleFilter = () => {
     setIsFilterVisible(!isFilterVisible);
+  };
+
+  const loadMoreProducts = () => {
+    setVisibleProductsCount((prevCount) => prevCount + 9);
   };
 
   return (
@@ -62,11 +67,19 @@ export default function HomePDC({
       </div>
 
       <div>
-        <CardListPDC products={products} />
+        <CardListPDC
+          products={products}
+          visibleProductsCount={visibleProductsCount}
+        />
         <div className="w-full flex items-center justify-center">
-          <button className="flex items-center -tracking-tighter border border-gray-400 rounded-full px-12 py-4 mb-6 hover:bg-gray-300">
-            Veja mais produtos
-          </button>
+          {visibleProductsCount < products.length && (
+            <button
+              onClick={loadMoreProducts}
+              className="flex items-center -tracking-tighter border border-gray-400 rounded-full px-12 py-4 mb-6 hover:bg-gray-300"
+            >
+              Veja mais produtos
+            </button>
+          )}
         </div>
       </div>
 
