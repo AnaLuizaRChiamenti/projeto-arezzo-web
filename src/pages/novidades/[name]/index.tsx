@@ -42,24 +42,24 @@ export default function ProductPage({ product }: ProductPageProps) {
       <div className="hidden md:block md:w-full md:pb-5 md:mb-8">
         <NavigationLane productName={product.name} />
       </div>
-      <div className="w-full lg:grid lg:grid-cols-2 lg:gap-2 px-4 lg:px-8 mb-10">
-        <div className="flex flex-wrap">
+      <div className="w-full lg:flex lg:gap-2 px-4 mb-10 ">
+        <div className="w-full flex flex-wrap  2xl:w-3/4 ">
           {product.images.map((image, index) => (
             <div
               key={index}
-              className={`w-full p-1 ${index === 0 ? 'block' : 'hidden'} sm:w-1/2 sm:block`}
+              className={`w-full p-4 ${index === 0 ? 'block' : 'hidden'} sm:w-1/2 sm:block`}
             >
               <Image
                 src={image.url}
                 alt={product.name}
-                width={500}
-                height={500}
-                className="object-cover"
+                width={400}
+                height={300}
+                className="object-cover 2xl:w-full"
               />
             </div>
           ))}
         </div>
-        <div className="mt-6 lg:mt-0 lg:px-8 2xl:w-3/3 2xl:ml-auto 2xl:flex 2xl:flex-col">
+        <div className="mt-6 lg:mt-0 xl:pl-5 lg:w-2/3 xl:w-3/4 2xl:w-2/5 2xl:flex 2xl:flex-col ">
           <div className="border-b-2 pb-4">
             <h1 className="text-2xl -tracking-tighter">{product.name}</h1>
             <p className="-tracking-tighter font-bold text-lg pt-1">
@@ -71,18 +71,18 @@ export default function ProductPage({ product }: ProductPageProps) {
               <button
                 key={index}
                 onClick={() => setSelectedSize(size)}
-                className={`bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm hover:bg-slate-300 ${selectedSize === size ? 'bg-slate-300' : ''
-                  }`}
+                className={`bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm hover:bg-slate-300
+                   ${selectedSize === size ? 'bg-slate-300' : ''}`}
               >
                 {size}
               </button>
             ))}
           </div>
           <div className="flex flex-col items-center w-full mt-5 border-b-2">
-            <button className="w-full flex items-center justify-center -tracking-tighter border border-gray-400 rounded-full px-6 py-3 hover:bg-gray-300 2xl:w-2/3  ">
+            <button className="w-full flex items-center justify-center -tracking-tighter border border-gray-400 rounded-full px-6 py-3 hover:bg-gray-300">
               Adicionar a sacola
             </button>
-            <button className="w-full flex items-center justify-center text-white bg-green-700 -tracking-tighter border border-gray-400 rounded-full px-6 py-3 my-4 2xl:w-2/3">
+            <button className="w-full flex items-center justify-center text-white bg-green-700 -tracking-tighter border border-gray-400 rounded-full px-6 py-3 my-4">
               Comprar agora
             </button>
           </div>
