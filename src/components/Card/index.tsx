@@ -30,7 +30,7 @@ const renderProductImage = (
 export default function ProductCard({ product }: ProductCardProps) {
   return (
     <div className="flex flex-col mb-8 items-center min-w-44 lg:min-w-64 2xl:min-w-96">
-      <div className="relative w-full aspect-[4/5] flex-grow">
+      <div className="relative w-full aspect-square flex-grow">
         {renderProductImage(product.images, product.name, product.code)}
       </div>
       <div className="w-full flex items-center px-4 mt-4">
