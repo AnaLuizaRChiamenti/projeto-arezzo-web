@@ -47,9 +47,7 @@ export default function Home({
       <section className="w-full h-screen md:h-auto md:items-end flex flex-wrap items-center py-3 px-8 2xl:py-16 2xl:px-32">
         <div className="w-1/2 lg:w-1/3 flex flex-col 2xl:self-stretch 2xl:justify-between">
           <div>
-            <h1 className="text-xl uppercase mb-4 md:text-base">
-              Nova Coleção
-            </h1>
+            <h1 className="text-lg uppercase mb-4 md:text-xl">Nova Coleção</h1>
             <h2 className="text-sm mb-6 md:text-3xl tracking-widest">
               #LIVIAAREZZO
             </h2>
