@@ -59,30 +59,35 @@ export default function ProductPage({ product }: ProductPageProps) {
             </div>
           ))}
         </div>
-        <div className="mt-6 lg:mt-0 xl:pl-5 lg:w-2/3 xl:w-3/4 2xl:w-2/5 2xl:flex 2xl:flex-col ">
+        <div className="mt-6 lg:mt-0 xl:pl-5 lg:w-3/3 xl:w-3/4 2xl:w-2/5 2xl:flex 2xl:flex-col 2xl:px-20">
           <div className="border-b-2 pb-4">
-            <h1 className="text-2xl -tracking-tighter">{product.name}</h1>
+            <h1 className="text-2xl -tracking-wider">{product.name}</h1>
             <p className="-tracking-tighter font-bold text-lg pt-1">
               {product.price.formattedValue}
             </p>
           </div>
-          <div className="flex flex-wrap gap-2 mt-4 border-b-2 pb-5">
-            {sizesList.map((size, index) => (
-              <button
-                key={index}
-                onClick={() => setSelectedSize(size)}
-                className={`bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm hover:bg-slate-300
+          <div className="w-full mt-3">
+            <p className="-tracking-tighter font-semibold text-sm pt-1">
+              Tamanho
+            </p>
+            <div className="flex flex-wrap gap-2 mt-4 border-b-2 pb-5">
+              {sizesList.map((size, index) => (
+                <button
+                  key={index}
+                  onClick={() => setSelectedSize(size)}
+                  className={`bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm hover:bg-slate-300
                    ${selectedSize === size ? 'bg-slate-300' : ''}`}
-              >
-                {size}
-              </button>
-            ))}
+                >
+                  {size}
+                </button>
+              ))}
+            </div>
           </div>
           <div className="flex flex-col items-center w-full mt-5 border-b-2">
             <button className="w-full flex items-center justify-center -tracking-tighter border border-gray-400 rounded-full px-6 py-3 hover:bg-gray-300">
               Adicionar a sacola
             </button>
-            <button className="w-full flex items-center justify-center text-white bg-green-700 -tracking-tighter border border-gray-400 rounded-full px-6 py-3 my-4">
+            <button className="w-full flex items-center justify-center text-white bg-custom-green-buy-button -tracking-tighter border border-gray-400 rounded-full px-8 py-4  my-4">
               Comprar agora
             </button>
           </div>
