@@ -4,6 +4,7 @@ import sizesList from '@/utils/sizes-list';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import Image from 'next/image';
 import { useState } from 'react';
+import icon_favorite from '/public/Images/Icones/icon-favorite.svg';
 
 interface ProductPageProps {
   product: Product;
@@ -37,6 +38,17 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export default function ProductPage({ product }: ProductPageProps) {
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
 
+  const productDetails = [
+    {
+      label: 'Material',
+      value: 'Couro com elástico na lateral e solado de borracha',
+    },
+    { label: 'Cor', value: product.color },
+    { label: 'Tamanho do salto', value: '5cm' },
+    { label: 'Descrição', value: product.description },
+    { label: 'Referência', value: product.code },
+  ];
+
   return (
     <>
       <div className="hidden md:block md:w-full md:pb-5 md:mb-8">
@@ -61,7 +73,16 @@ export default function ProductPage({ product }: ProductPageProps) {
         </div>
         <div className="mt-6 lg:mt-0 xl:pl-5 lg:w-3/3 xl:w-3/4 2xl:w-2/5 2xl:flex 2xl:flex-col 2xl:px-20">
           <div className="border-b-2 pb-4">
-            <h1 className="text-2xl -tracking-wider">{product.name}</h1>
+            <div className="flex items-start justify-between">
+              <h1 className="text-2xl -tracking-wider">{product.name}</h1>
+              <button>
+                <Image
+                  src={icon_favorite}
+                  alt="ícone de favoritos"
+                  className="w-6 ml-2 md:w-8 lg:w-7 xl:w-7"
+                />
+              </button>
+            </div>
             <p className="-tracking-tighter font-bold text-lg pt-1">
               {product.price.formattedValue}
             </p>
@@ -93,29 +114,18 @@ export default function ProductPage({ product }: ProductPageProps) {
           </div>
           <div className="pt-5 pb-5 border-b-2">
             <h2 className="mb-2 text-lg -tracking-wide">Por que apostar?</h2>
-            <p className="-tracking-wide">
+            <p className="text-sm -tracking-wide">
               Com uma pegada urbana e descolada, os sapatos tratorados são
               tendência na estação e prometem modernizar qualquer look.
             </p>
           </div>
           <div className="py-5 space-y-2">
-            <h2 className=" text-lg -tracking-wide">Detalhes do produto</h2>
-            <p>
-              <strong>Material:</strong> Couro com elástico na lateral e solado
-              de borracha
-            </p>
-            <p>
-              <strong>Cor:</strong> {product.color}
-            </p>
-            <p>
-              <strong>Tamanho do salto:</strong> 5cm
-            </p>
-            <p>
-              <strong>Descrição:</strong> {product.description}
-            </p>
-            <p>
-              <strong>Referência:</strong> {product.code}
-            </p>
+            <h2 className="text-lg -tracking-wide">Detalhes do produto</h2>
+            {productDetails.map((detail, index) => (
+              <p key={index} className="text-sm -tracking-wide">
+                <strong>{detail.label}:</strong> {detail.value}
+              </p>
+            ))}
           </div>
         </div>
       </div>
