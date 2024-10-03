@@ -1,9 +1,10 @@
-import sizesList from '@/utils/sizes-list';
-import icon_close from '/public/Images/Icones/icon-close.svg';
-import icon_arrow from '/public/Images/Icones/icon-arrow.svg';
 import Image from 'next/image';
-import shoesList from '@/utils/shoes-list';
+import React from 'react';
+import shoesList from '../../utils/shoes-list';
 import { useState } from 'react';
+import icon_close from '../../../public/Images/Icones/icon-close.svg';
+import icon_arrow from '../../../public/Images/Icones/icon-arrow.svg';
+import sizesList from '../../utils/sizes-list';
 
 interface FilterComponentProps {
   onClose: () => void;

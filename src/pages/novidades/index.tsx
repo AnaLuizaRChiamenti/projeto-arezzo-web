@@ -1,12 +1,15 @@
 import { useState } from 'react';
-import { Product } from '@/types/product';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import Image from 'next/image';
-import icon_filter from '/public/Images/Icones/icon-filter.png';
-import CardListPDC from '@/components/Card-list-pdc';
-import CardNavList from '@/components/Card-nav-list';
-import Filter from '@/components/Filter';
-import NavigationLane from '@/components/Navigation-lane';
+import React from 'react';
+import { Product } from '../../types/product';
+import NavigationLane from '../../components/Navigation-lane';
+import CardNavList from '../../components/Card-nav-list';
+import CardListPDC from '../../components/Card-list-pdc';
+import Filter from '../../components/Filter';
+import icon_filter from '../../../public/Images/Icones/icon-filter.png';
+
+const PRODUCTS_DEFAULT = 9;
 
 export const getStaticProps = (async () => {
   const res = await fetch(process.env.NEXT_PUBLIC_DB_URL as string);
@@ -20,9 +23,15 @@ export default function HomePDC({
   products,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [isFilterVisible, setIsFilterVisible] = useState(false);
+  const [visibleProductsCount, setVisibleProductsCount] =
+    useState(PRODUCTS_DEFAULT);
 
   const toggleFilter = () => {
     setIsFilterVisible(!isFilterVisible);
+  };
+
+  const loadMoreProducts = () => {
+    setVisibleProductsCount((prevCount) => prevCount + PRODUCTS_DEFAULT);
   };
 
   const getVisibleValue = (isFilterVisible: boolean): string => {
@@ -66,11 +75,19 @@ export default function HomePDC({
       </div>
 
       <div>
-        <CardListPDC products={products} />
+        <CardListPDC
+          products={products}
+          visibleProductsCount={visibleProductsCount}
+        />
         <div className="w-full flex items-center justify-center">
-          <button className="flex items-center -tracking-tighter border border-gray-400 rounded-full px-12 py-4 mb-6 hover:bg-gray-300">
-            Veja mais produtos
-          </button>
+          {visibleProductsCount < products.length && (
+            <button
+              onClick={loadMoreProducts}
+              className="flex items-center -tracking-tighter border border-gray-400 rounded-full px-12 py-4 mb-6 hover:bg-gray-300"
+            >
+              Veja mais produtos
+            </button>
+          )}
         </div>
       </div>
 
