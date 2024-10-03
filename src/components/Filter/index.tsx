@@ -9,6 +9,16 @@ interface FilterComponentProps {
   onClose: () => void;
 }
 
+const getRotationClass = (isCategoryOpen: boolean): string => {
+  return `transform transition-transform 
+            ${getRotationClass(isCategoryOpen)}`;
+};
+
+const getSizeValue = (isSizeOpen: boolean): string => {
+  return `transform transition-transform 
+                ${isSizeOpen ? 'rotate-180' : ''}`;
+};
+
 export default function Filter({ onClose }: FilterComponentProps) {
   const [isCategoryOpen, setIsCategoryOpen] = useState(true);
   const [isSizeOpen, setIsSizeOpen] = useState(true);
@@ -32,8 +42,7 @@ export default function Filter({ onClose }: FilterComponentProps) {
             <Image
               src={icon_arrow}
               alt="Icone de flecha"
-              className={`transform transition-transform 
-                ${isCategoryOpen ? 'rotate-180' : ''}`}
+              className={`${getRotationClass(isCategoryOpen)}`}
             />
           </button>
         </div>
@@ -60,8 +69,7 @@ export default function Filter({ onClose }: FilterComponentProps) {
             <Image
               src={icon_arrow}
               alt="Icone de flecha"
-              className={`transform transition-transform 
-                ${isSizeOpen ? 'rotate-180' : ''}`}
+              className={`${getSizeValue(isSizeOpen)}`}
             />
           </button>
         </div>

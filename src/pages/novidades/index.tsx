@@ -25,6 +25,10 @@ export default function HomePDC({
     setIsFilterVisible(!isFilterVisible);
   };
 
+  const getVisibleValue = (isFilterVisible: boolean): string => {
+    return `fixed flex items-center left-0 top-0 h-screen w-96 bg-white z-10 transform transition-transform duration-300 ease-linear  ${isFilterVisible ? 'translate-x-0 ' : '-translate-x-full '}`;
+  };
+
   return (
     <section className="w-full">
       <div className="w-full pb-5 mb-5">
@@ -70,9 +74,7 @@ export default function HomePDC({
         </div>
       </div>
 
-      <div
-        className={`fixed flex items-center left-0 top-0 h-screen w-96 bg-white z-10 transform transition-transform duration-300 ease-linear  ${isFilterVisible ? 'translate-x-0 ' : '-translate-x-full '}`}
-      >
+      <div className={`${getVisibleValue(isFilterVisible)}`}>
         <Filter onClose={toggleFilter} />
       </div>
     </section>
