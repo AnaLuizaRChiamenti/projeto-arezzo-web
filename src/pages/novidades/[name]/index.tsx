@@ -1,10 +1,11 @@
-import NavigationLane from '@/components/Navigation-lane';
-import { Product } from '@/types/product';
-import sizesList from '@/utils/sizes-list';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import Image from 'next/image';
 import { useState } from 'react';
+import React from 'react';
+import { Product } from '@/types/product';
+import sizesList from '@/utils/sizes-list';
 import icon_favorite from '/public/Images/Icones/icon-favorite.svg';
+import NavigationLane from '@/components/Navigation-lane';
 
 const FIRST_INDEX = 0;
 interface ProductPageProps {
