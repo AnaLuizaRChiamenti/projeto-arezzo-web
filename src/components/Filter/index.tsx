@@ -1,7 +1,6 @@
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 import shoesList from '../../utils/shoes-list';
-import { useState } from 'react';
 import icon_close from '../../../public/Images/Icones/icon-close.svg';
 import icon_arrow from '../../../public/Images/Icones/icon-arrow.svg';
 import sizesList from '../../utils/sizes-list';
@@ -10,14 +9,8 @@ interface FilterComponentProps {
   onClose: () => void;
 }
 
-const getRotationClass = (isCategoryOpen: boolean): string => {
-  return `transform transition-transform 
-            ${getRotationClass(isCategoryOpen)}`;
-};
-
-const getSizeValue = (isSizeOpen: boolean): string => {
-  return `transform transition-transform 
-                ${isSizeOpen ? 'rotate-180' : ''}`;
+const getRotationClass = (isOpen: boolean): string => {
+  return isOpen ? 'rotate-180' : '';
 };
 
 export default function Filter({ onClose }: FilterComponentProps) {
@@ -42,25 +35,23 @@ export default function Filter({ onClose }: FilterComponentProps) {
           <button className="text-xl" onClick={toggleCategory}>
             <Image
               src={icon_arrow}
-              alt="Icone de flecha"
-              className={`${getRotationClass(isCategoryOpen)}`}
+              alt="Ícone de flecha"
+              className={`transform transition-transform ${getRotationClass(isCategoryOpen)}`}
             />
           </button>
         </div>
-        <div className="flex flex-wrap gap-2 border-b pb-4 w-full">
-          {isCategoryOpen && (
-            <div className="flex flex-wrap gap-2  pb-4 w-full">
-              {shoesList.map((category, index) => (
-                <button
-                  key={index}
-                  className="bg-gray-100 text-gray-800 px-4 py-1 rounded-full text-sm hover:bg-slate-300"
-                >
-                  {category}
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
+        {isCategoryOpen && (
+          <div className="flex flex-wrap gap-2 border-b pb-4 w-full">
+            {shoesList.map((category, index) => (
+              <button
+                key={index}
+                className="bg-gray-100 text-gray-800 px-4 py-1 rounded-full text-sm hover:bg-slate-300"
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
       <div>
@@ -69,25 +60,23 @@ export default function Filter({ onClose }: FilterComponentProps) {
           <button className="text-xl" onClick={toggleSize}>
             <Image
               src={icon_arrow}
-              alt="Icone de flecha"
-              className={`${getSizeValue(isSizeOpen)}`}
+              alt="Ícone de flecha"
+              className={`transform transition-transform ${getRotationClass(isSizeOpen)}`}
             />
           </button>
         </div>
-        <div className="flex flex-wrap gap-2 w-full">
-          {isSizeOpen && (
-            <div className="flex flex-wrap gap-2 w-full">
-              {sizesList.map((size, index) => (
-                <button
-                  key={index}
-                  className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm hover:bg-slate-300"
-                >
-                  {size}
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
+        {isSizeOpen && (
+          <div className="flex flex-wrap gap-2 w-full">
+            {sizesList.map((size, index) => (
+              <button
+                key={index}
+                className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm hover:bg-slate-300"
+              >
+                {size}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

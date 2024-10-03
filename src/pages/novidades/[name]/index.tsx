@@ -37,15 +37,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-const getImageMobile = (index: number) => {
-  return `w-full p-4 ${index === FIRST_INDEX ? 'block' : 'hidden'} sm:w-1/2 sm:block`;
-};
-
-const hoverInSelectedSize = (selectedSize: string, size: string) => {
-  return `bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm hover:bg-slate-300
-        ${selectedSize === size ? 'bg-slate-300' : ''}`;
-};
-
 export default function ProductPage({ product }: ProductPageProps) {
   const [selectedSize, setSelectedSize] = useState<string>('');
 
@@ -60,6 +51,15 @@ export default function ProductPage({ product }: ProductPageProps) {
     { label: 'Referência', value: product.code },
   ];
 
+  const getImageMobile = (index: number) => {
+    return `w-full p-4 ${index === FIRST_INDEX ? 'block' : 'hidden'} sm:w-1/2 sm:block`;
+  };
+
+  const hoverInSelectedSize = (selectedSize: string, size: string) => {
+    return `bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm hover:bg-slate-300
+        ${selectedSize === size ? 'bg-slate-300' : ''}`;
+  };
+
   return (
     <>
       <div className="hidden md:block md:w-full md:pb-5 md:mb-8">
@@ -68,7 +68,7 @@ export default function ProductPage({ product }: ProductPageProps) {
       <div className="w-full lg:flex lg:gap-2 px-4 mb-10">
         <div className="w-full flex flex-wrap  2xl:w-3/4">
           {product.images.map((image, index) => (
-            <div key={index} className={`${getImageMobile(index)}`}>
+            <div key={index} className={getImageMobile(index)}>
               <Image
                 src={image.url}
                 alt={product.name}
@@ -104,7 +104,7 @@ export default function ProductPage({ product }: ProductPageProps) {
                 <button
                   key={index}
                   onClick={() => setSelectedSize(size)}
-                  className={`${hoverInSelectedSize(selectedSize, size)}`}
+                  className={hoverInSelectedSize(selectedSize, size)}
                 >
                   {size}
                 </button>
