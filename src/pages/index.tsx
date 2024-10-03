@@ -72,7 +72,7 @@ export default function Home({
             Conheça o novo coturno
           </p>
           <p className="mb-4 tracking-tight lg:text-xl">Livia Arezzo</p>
-          <button className="text-sm bg-black text-white px-4 py-2 rounded-full lg:w-2/2 lg:text-xl xl:w-1/2">
+          <button className="text-xs font-normal text-white bg-black rounded-full w-24 h-12 px-4 py-2">
             Ver coleção
           </button>
         </div>
