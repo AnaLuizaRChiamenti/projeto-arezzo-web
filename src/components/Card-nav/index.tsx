@@ -10,14 +10,7 @@ const renderProductImage = (images: { url: string }[], alt: string) => {
     return <p>Imagem não disponível</p>;
   }
 
-  return (
-    <Image
-      src={images[0].url}
-      alt={alt}
-      layout="fill"
-      className="object-cover"
-    />
-  );
+  return <Image src={images[0].url} alt={alt} fill className="object-cover" />;
 };
 
 export default function CardNav({ product }: ProductCardProps) {

@@ -17,12 +17,7 @@ const renderProductImage = (
 
   return (
     <Link href={`/novidades/${code}`}>
-      <Image
-        src={images[0].url}
-        alt={alt}
-        layout="fill"
-        className="object-cover"
-      />
+      <Image src={images[0].url} alt={alt} fill className="object-cover" />
     </Link>
   );
 };

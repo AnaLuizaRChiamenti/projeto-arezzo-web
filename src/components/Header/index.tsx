@@ -21,7 +21,6 @@ export default function Header() {
                 alt="Logo da Arezzo"
                 width={240}
                 height={100}
-                objectFit="contain"
               />
             </Link>
           </div>
