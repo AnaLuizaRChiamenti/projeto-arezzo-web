@@ -1,5 +1,6 @@
-import { Product } from '@/types/product';
+import React from 'react';
 import CardNav from '../Card-nav';
+import { Product } from '../../types/product';
 
 interface ProductListProps {
   products: Product[];

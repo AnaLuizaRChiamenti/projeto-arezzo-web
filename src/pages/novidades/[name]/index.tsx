@@ -1,9 +1,10 @@
-import NavigationLane from '@/components/Navigation-lane';
-import { Product } from '@/types/product';
-import sizesList from '@/utils/sizes-list';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import Image from 'next/image';
 import { useState } from 'react';
+import React from 'react';
+import NavigationLane from '../../../components/Navigation-lane';
+import { Product } from '../../../types/product';
+import sizesList from '../../../utils/sizes-list';
 
 interface ProductPageProps {
   product: Product;
