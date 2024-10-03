@@ -13,6 +13,7 @@ const config: Config = {
         foreground: 'var(--foreground)',
         'custom-beige': '#CEC6BE',
         'custom-grey-card': '#F2F2F2',
+        'custom-green-buy-button': '#4F9071',
       },
     },
   },

@@ -11,7 +11,7 @@ export default function CardListPDC({
   visibleProductsCount,
 }: ProductListProps) {
   return (
-    <div className="w-full mt-5 p-4 grid grid-cols-1 md:gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
+    <div className="w-full mt-5 p-4 grid grid-cols-1 md:gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {products.slice(0, visibleProductsCount).map((product, index) => (
         <ProductCard key={index} product={product} />
       ))}
