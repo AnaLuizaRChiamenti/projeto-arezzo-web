@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Image from 'next/image';
 import ZZLogo from '/public/Images/Logos/ZZLOGO.png';
 import icon_favorite from '/public/Images/Icones/icon-favorite.svg';
@@ -7,11 +8,37 @@ import icon_menu from '/public/Images/Icones/icon-menu.png';
 import icon_local from '/public/Images/Icones/icon-local.svg';
 import Link from 'next/link';
 import { navButtons } from '@/utils/nav-buttons';
+import NovidadesDropdown from '../Novidades-dropdown';
 
 export default function Header() {
+  const [isNovidadesOpen, setIsNovidadesOpen] = useState(false);
+  const [isMouseOverDropdown, setIsMouseOverDropdown] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsNovidadesOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    if (!isMouseOverDropdown) {
+      setIsNovidadesOpen(false);
+    }
+  };
+
   return (
     <>
-      <header className="fixed w-full h-24 p-5 flex bg-white z-50 top-0">
+      {isNovidadesOpen && (
+        <div
+          onMouseEnter={() => setIsMouseOverDropdown(true)}
+          onMouseLeave={() => {
+            setIsMouseOverDropdown(false);
+            setIsNovidadesOpen(false);
+          }}
+        >
+          <NovidadesDropdown />
+        </div>
+      )}
+
+      <header className="fixed w-full h-24 px-5 flex bg-white z-50 top-0">
         <div className="flex items-center xl:gap-10">
           <div className="w-24 md:w-28 md:ml-2 lg:w-20 xl:w-24 xl:ml-4">
             <Link href={'/'}>
@@ -24,16 +51,25 @@ export default function Header() {
               />
             </Link>
           </div>
-          <nav className="gap-8 hidden md:flex md:items-center ">
+          <nav className="relative gap-8 hidden md:flex md:items-center h-full">
             {navButtons.map((button) => (
-              <Link key={button.id} href={`/${button.id}`}>
-                <button className="font-medium text-sm border-b-2 border-transparent hover:border-black transition-all duration-300 ease-in-out">
-                  {button.text}
-                </button>
-              </Link>
+              <div
+                key={button.id}
+                className="group relative h-full"
+                onMouseEnter={
+                  button.id === 'novidades' ? handleMouseEnter : undefined
+                }
+                onMouseLeave={handleMouseLeave}
+              >
+                <Link href={`/${button.id}`}>
+                  <button className="font-medium text-sm h-full w-full flex items-center justify-center">
+                    {button.text}
+                  </button>
+                </Link>
+              </div>
             ))}
             <div className="w-0.5 h-8 bg-black" />
-            <button className="font-medium text-sm border-b-2 border-transparent hover:border-black transition-all duration-300 ease-in-out">
+            <button className="font-medium text-sm border-b-2 border-transparent hover:border-black transition-all duration-300 ease-in-out h-full">
               BRIZZA
             </button>
           </nav>
@@ -47,7 +83,7 @@ export default function Header() {
                 width={32}
                 className="hidden md:flex lg:w-6 xl:w-7"
               />
-              <p className="hidden lg:block lg:text-sm lg:underline lg:font-medium xl:text-xs ">
+              <p className="hidden lg:block lg:text-sm lg:underline lg:font-medium xl:text-xs">
                 ATIVE SUA LOCALIZAÇÃO
               </p>
             </button>
